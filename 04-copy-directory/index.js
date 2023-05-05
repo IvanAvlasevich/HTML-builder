@@ -1,11 +1,9 @@
-
 const path = require('path')
 const fs = require('fs')
+const fs_promises = require('node:fs/promises');
 
 const dirPath = path.join(__dirname,'files')
 const newDir = path.join(__dirname,'files-copy')
-
-const fs_promises = require('node:fs/promises');
 
 async function makeDirectory() {
   const projectFolder = path.join(__dirname, 'files-copy');
