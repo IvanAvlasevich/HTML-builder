@@ -7,14 +7,19 @@ const newDir = path.join(__dirname,'files-copy')
 
 async function makeDirectory() {
   const projectFolder = path.join(__dirname, 'files-copy');
+
+      fs.readdir(projectFolder,(error, filesDir) => {
+        if (!error) {
+          filesDir.forEach((file) => {
+            let delPath = path.join(projectFolder,file)
+            fs.unlink(delPath,(err)=>{
+              if (err){console.error(err)}
+            })
+            })
+          }
+        })
+  
   const dirCreation = await fs_promises.mkdir(projectFolder, { recursive: true });
-
-  if(dirCreation === undefined){
-    console.log('Папка уже была создана');
-  }else {
-    console.log('Создание копии папки...');
-
-  }
   return dirCreation;
 }
 
