@@ -15,4 +15,11 @@ stdin.on('data', (data) => {
 });
 process.on('exit', code => {
   stdout.write('Good luck, see you!');
+  writeStream.close();
+  process.exit();
+});
+process.on('SIGINT', code => {
+  stdout.write('Good luck, see you!');
+  writeStream.close();
+  process.exit();
 });
